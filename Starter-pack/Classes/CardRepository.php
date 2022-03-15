@@ -21,7 +21,9 @@ class CardRepository
     // Get one
     public function find(): array
     {
-
+        $sqlQuery = "SELECT * FROM types WHERE id = 1;";
+        $statement = $this->databaseManager->connection->query($sqlQuery);
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
     // Get all

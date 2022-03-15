@@ -20,6 +20,7 @@ $databaseManager->connect();
 // Update the naming if you'd like to work with another collection
 $cardRepository = new CardRepository($databaseManager);
 $cards = $cardRepository->get();
+$firstCard = $cardRepository->find();
 
 // Get the current action to execute
 // If nothing is specified, it will remain empty (home should be loaded)
@@ -32,11 +33,11 @@ switch ($action) {
         create();
         break;
     default:
-        overview($cards);
+        overview($cards, $firstCard);
         break;
 }
 
-function overview($cards)
+function overview($cards, $firstCard)
 {
     // Load your view
     // Tip: you can load this dynamically and based on a variable, if you want to load another view

@@ -17,5 +17,8 @@
     <?php endforeach; ?>
 </ul>
 
+<p>
+    Show the first item: <?= $firstCard[0]['name'] ?>
+</p>
 </body>
 </html>
