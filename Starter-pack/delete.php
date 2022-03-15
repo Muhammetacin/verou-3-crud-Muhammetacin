@@ -13,4 +13,4 @@ header("refresh:3; index.php");
 </head>
 <body>
 
-<h1>Success! You created a new type.</h1>
+<h1>Too bad! You deleted a type.</h1>

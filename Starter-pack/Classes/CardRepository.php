@@ -48,9 +48,13 @@ class CardRepository
         $sqlQuery = 'UPDATE types SET name=' . $name . ' WHERE id = '. $id;
     }
 
-    public function delete(): void
+    public function delete(int $id): void
     {
-
+        $sqlQuery = 'DELETE FROM types WHERE id = :id';
+        $statement = $this->databaseManager->connection->prepare($sqlQuery);
+        $statement->execute([
+            ':id' => $id
+        ]);
     }
 
 }

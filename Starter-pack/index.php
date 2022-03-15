@@ -33,10 +33,10 @@ switch ($action) {
         create($cardRepository);
         break;
     case 'Update':
-        update();
+        update($cardRepository);
         break;
     case 'Delete':
-        delete();
+        delete($cardRepository);
         break;
     default:
         overview($cards, $firstCard);
@@ -46,6 +46,13 @@ switch ($action) {
 if(!empty($_POST['name']) && isset($_POST['create'])) {
     $cardRepository->create($_POST['name']);
     header("location: success.php");
+}
+
+var_dump($_GET);
+
+if(isset($_GET['id'])) {
+    $cardRepository->delete(intval($_GET['id']));
+    header("location: delete.php");
 }
 
 function overview($cards, $firstCard)
@@ -61,12 +68,12 @@ function create($cardRepository)
     require 'create.php';
 }
 
-function update()
+function update($cardRepository)
 {
 
 }
 
-function delete()
+function delete($cardRepository)
 {
-
+    require 'delete.php';
 }

@@ -11,11 +11,14 @@
 
 <h1>Goodcard - track your collection of Pokémon cards</h1>
 
-<ul>
+<ol>
     <?php foreach ($cards as $card) : ?>
-        <li><?= $card['name'] ?></li>
+        <li><?= $card['name'] ?> <br>
+            <a href="">Edit</a>
+            <a href="index.php?id=<?php echo $card['id'] ?>">Delete</a>
+        </li>
     <?php endforeach; ?>
-</ul>
+</ol>
 
 <p>
     Show the first item: <?= $firstCard[0]['name'] ?>
@@ -24,6 +27,14 @@
 <form method="get" action="index.php">
     <label for="createCard">Create new card</label><br>
     <input type="submit" value="Create" name="action">
+</form>
+
+<form>
+    <h2>Select number from list and delete type</h2>
+    <label> ID:
+        <input type="text" name="deleteId">
+    </label>
+    <input type="submit" value="Delete" name="action">
 </form>
 
 </body>
