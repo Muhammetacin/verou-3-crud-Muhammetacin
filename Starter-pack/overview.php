@@ -14,7 +14,7 @@
 <ol>
     <?php foreach ($cards as $card) : ?>
         <li><?= $card['name'] ?> <br>
-            <a href="">Edit</a>
+            <a href="index.php?id=<?php echo $card['id'] ?>">Edit</a>
             <a href="index.php?id=<?php echo $card['id'] ?>">Delete</a>
         </li>
     <?php endforeach; ?>
