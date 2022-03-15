@@ -29,14 +29,14 @@ $action = $_GET['action'] ?? null;
 // This system will help you to only execute the code you want, instead of all of it (or complex if statements)
 switch ($action) {
     case 'create':
-        $this->create();
+        create();
         break;
     default:
-        $this->overview();
+        overview($cards);
         break;
 }
 
-function overview()
+function overview($cards)
 {
     // Load your view
     // Tip: you can load this dynamically and based on a variable, if you want to load another view
