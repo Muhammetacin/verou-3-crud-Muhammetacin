@@ -20,5 +20,11 @@
 <p>
     Show the first item: <?= $firstCard[0]['name'] ?>
 </p>
+
+<form method="get" action="index.php">
+    <label for="createCard">Create new card</label><br>
+    <input type="submit" value="Create" name="action">
+</form>
+
 </body>
 </html>

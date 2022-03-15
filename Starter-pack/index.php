@@ -20,7 +20,7 @@ $databaseManager->connect();
 // Update the naming if you'd like to work with another collection
 $cardRepository = new CardRepository($databaseManager);
 $cards = $cardRepository->get();
-$firstCard = $cardRepository->find();
+$firstCard = $cardRepository->find(1);
 
 // Get the current action to execute
 // If nothing is specified, it will remain empty (home should be loaded)
@@ -29,12 +29,23 @@ $action = $_GET['action'] ?? null;
 // Load the relevant action
 // This system will help you to only execute the code you want, instead of all of it (or complex if statements)
 switch ($action) {
-    case 'create':
-        create();
+    case 'Create':
+        create($cardRepository);
+        break;
+    case 'Update':
+        update();
+        break;
+    case 'Delete':
+        delete();
         break;
     default:
         overview($cards, $firstCard);
         break;
+}
+
+if(!empty($_POST['name']) && isset($_POST['create'])) {
+    $cardRepository->create($_POST['name']);
+    header("location: success.php");
 }
 
 function overview($cards, $firstCard)
@@ -44,7 +55,18 @@ function overview($cards, $firstCard)
     require 'overview.php';
 }
 
-function create()
+function create($cardRepository)
 {
-    // TODO: provide the create logic
+    // provide the create logic -> done
+    require 'create.php';
+}
+
+function update()
+{
+
+}
+
+function delete()
+{
+
 }

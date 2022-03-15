@@ -9,6 +9,7 @@ class DatabaseManager
     private string $user;
     private string $password;
     private string $dbname;
+
     // This one is public, so we can use it outside of this class
     // We could also use a private variable and a getter (but let's not make things too complicated at this point)
     public PDO $connection;

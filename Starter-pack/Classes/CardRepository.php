@@ -13,39 +13,39 @@ class CardRepository
         $this->databaseManager = $databaseManager;
     }
 
-    public function create(): void
+    public function create(string $name): bool
     {
+        $sqlQuery = 'INSERT INTO types (name) VALUES (:name)';
 
+        $statement = $this->databaseManager->connection->prepare($sqlQuery);
+        $statement->execute([
+            ':name' => $name
+        ]);
+
+        return $this->databaseManager->connection->lastInsertId();
     }
 
     // Get one
-    public function find(): array
+    public function find(int $id): array
     {
-        $sqlQuery = "SELECT * FROM types WHERE id = 1;";
-        $statement = $this->databaseManager->connection->query($sqlQuery);
+        $sqlQuery = 'SELECT * FROM types WHERE id = ' . $id;
+        $statement = $this->databaseManager->connection->prepare($sqlQuery);
+        $statement->execute();
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
     // Get all
     public function get(): array
     {
-        $sqlQuery = "SELECT * FROM types";
-        $statement = $this->databaseManager->connection->query($sqlQuery);
+        $sqlQuery = 'SELECT * FROM types';
+        $statement = $this->databaseManager->connection->prepare($sqlQuery);
+        $statement->execute();
         return $statement->fetchAll(PDO::FETCH_ASSOC);
-
-        // replace dummy data by real one -> done
-//        return [
-//            ['name' => 'dummy one'],
-//            ['name' => 'dummy two'],
-//        ];
-
-        // We get the database connection first, so we can apply our queries with it
-        // return $this->databaseManager->connection-> (runYourQueryHere)
     }
 
-    public function update(): void
+    public function update($id, $name): void
     {
-
+        $sqlQuery = 'UPDATE types SET name=' . $name . ' WHERE id = '. $id;
     }
 
     public function delete(): void
