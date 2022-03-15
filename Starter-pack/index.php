@@ -29,7 +29,7 @@ $action = $_GET['action'] ?? null;
 // Load the relevant action
 // This system will help you to only execute the code you want, instead of all of it (or complex if statements)
 switch ($action) {
-    case 'Create':
+    case 'Add type':
         create($cardRepository);
         break;
     case 'Update':
@@ -47,8 +47,6 @@ if(!empty($_POST['name']) && isset($_POST['create'])) {
     $cardRepository->create($_POST['name']);
     header("location: success.php");
 }
-
-var_dump($_GET);
 
 if(isset($_GET['id'])) {
     $cardRepository->delete(intval($_GET['id']));
