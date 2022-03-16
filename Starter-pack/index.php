@@ -29,7 +29,7 @@ $action = $_GET['action'] ?? null;
 // Load the relevant action
 // This system will help you to only execute the code you want, instead of all of it (or complex if statements)
 switch ($action) {
-    case 'Add type':
+    case 'Create':
         create($cardRepository);
         break;
     case 'Update':
@@ -39,12 +39,12 @@ switch ($action) {
         delete($cardRepository);
         break;
     default:
-        overview($cards, $firstCard);
+        overview($cards);
         break;
 }
 
 if(!empty($_POST['name']) && isset($_POST['create'])) {
-    $cardRepository->create($_POST['name']);
+    $cardRepository->create($_POST['name'], $_POST['type']);
     header("location: success.php");
 }
 
@@ -53,22 +53,19 @@ if(isset($_GET['id'])) {
     header("location: delete.php");
 }
 
-function overview($cards, $firstCard)
+function overview($cards)
 {
-    // Load your view
-    // Tip: you can load this dynamically and based on a variable, if you want to load another view
     require 'overview.php';
 }
 
 function create($cardRepository)
 {
-    // provide the create logic -> done
     require 'create.php';
 }
 
 function update($cardRepository)
 {
-
+    require 'edit.php';
 }
 
 function delete($cardRepository)

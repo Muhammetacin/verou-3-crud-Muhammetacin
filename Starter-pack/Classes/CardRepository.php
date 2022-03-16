@@ -13,13 +13,14 @@ class CardRepository
         $this->databaseManager = $databaseManager;
     }
 
-    public function create(string $name): bool
+    public function create(string $name, string $type): bool
     {
-        $sqlQuery = 'INSERT INTO types (name) VALUES (:name)';
+        $sqlQuery = 'INSERT INTO types (name, type) VALUES (:name, :type)';
 
         $statement = $this->databaseManager->connection->prepare($sqlQuery);
         $statement->execute([
-            ':name' => $name
+            ':name' => $name,
+            ':type' => $type
         ]);
 
         return $this->databaseManager->connection->lastInsertId();
