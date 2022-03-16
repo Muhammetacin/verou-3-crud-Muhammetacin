@@ -39,7 +39,7 @@ switch ($action) {
         delete($cardRepository);
         break;
     default:
-        overview($cards);
+        overview($cardRepository, $cards);
         break;
 }
 
@@ -48,7 +48,7 @@ if (!empty($_POST['name']) && isset($_POST['create'])) {
     header("location: success.php");
 }
 
-function overview($cards)
+function overview($cardRepository, $cards)
 {
     require 'overview.php';
 }
