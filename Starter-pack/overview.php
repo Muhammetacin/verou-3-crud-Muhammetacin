@@ -36,7 +36,7 @@
                 <td><?= $card['type'] ?></td>
                 <td class="d-flex justify-content-center">
                     <a href="index.php?action=Update&id=<?php echo $card['id']?>" class="btn btn-primary me-2">Update</a>
-                    <a href="index.php?action=Delete&id=<?php echo $card['id'] ?>" class="btn btn-danger">Delete</a>
+                    <a href="index.php?action=Delete&id=<?php echo $card['id'] ?>&name=<?= $card['name']?>" class="btn btn-danger">Delete</a>
                 </td>
             </tr>
         <?php endforeach; ?>

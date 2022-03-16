@@ -20,4 +20,4 @@ header("refresh:1; index.php");
 </head>
 <body>
 
-<h1 class="d-flex justify-content-center text-white bg-success py-3 mb-3">Success! You created a new Pokèmon.</h1>
+<h1 class="d-flex justify-content-center text-white bg-success py-3 mb-3">Success! You created a new Pokèmon <?= $_GET["name"] ?> with type <?= $_GET["type"] ?>.</h1>

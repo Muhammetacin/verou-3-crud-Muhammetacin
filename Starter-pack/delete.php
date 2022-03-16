@@ -20,4 +20,4 @@ header("refresh:1; index.php");
 </head>
 <body>
 
-<h1 class="d-flex justify-content-center text-white bg-danger py-3 mb-3">You deleted a Pokèmon.</h1>
+<h1 class="d-flex justify-content-center text-white bg-danger py-3 mb-3">You deleted Pokèmon <?= $_GET['name'] ?></h1>

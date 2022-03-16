@@ -57,7 +57,7 @@ function create($cardRepository)
 {
     if(isset($_GET['name']) && isset($_GET['type'])) {
         $cardRepository->create($_GET['name'], $_GET['type']);
-        header("location: success.php");
+        header("location: success.php?name=" . $_GET['name'] . "&type=" . $_GET['type']);
         return;
     }
 
