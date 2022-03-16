@@ -35,12 +35,8 @@
                 <td><?= $card['name'] ?></td>
                 <td><?= $card['type'] ?></td>
                 <td class="d-flex justify-content-center">
-                    <a href="index.php" class="btn btn-primary me-2">Update
-<!--                        <button class="btn btn-primary me-2">Update</button>-->
-                    </a>
-                    <a href="index.php?action=Delete&id=<?php echo $card['id'] ?>">
-                        <button class="btn btn-danger">Delete</button>
-                    </a>
+                    <a href="index.php?action=Update&id=<?php echo $card['id']?>" class="btn btn-primary me-2">Update</a>
+                    <a href="index.php?action=Delete&id=<?php echo $card['id'] ?>" class="btn btn-danger">Delete</a>
                 </td>
             </tr>
         <?php endforeach; ?>

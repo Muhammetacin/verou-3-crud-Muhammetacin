@@ -13,7 +13,7 @@ class CardRepository
         $this->databaseManager = $databaseManager;
     }
 
-    public function create(string $name, string $type): bool
+    public function create(string $name, string $type): void
     {
         $sqlQuery = 'INSERT INTO types (name, type) VALUES (:name, :type)';
 
@@ -22,8 +22,6 @@ class CardRepository
             ':name' => $name,
             ':type' => $type
         ]);
-
-        return $this->databaseManager->connection->lastInsertId();
     }
 
     // Get one
@@ -44,9 +42,16 @@ class CardRepository
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function update($id, $name): void
+    public function update(int $id, string $name, string $type): void
     {
-        $sqlQuery = 'UPDATE types SET name=' . $name . ' WHERE id = '. $id;
+//        $sqlQuery = 'UPDATE types SET name=' . $name . ', type='. $type .' WHERE id = '. $id;
+        $sqlQuery = 'UPDATE types SET name=:name, type=:type WHERE id = :id';
+        $statement = $this->databaseManager->connection->prepare($sqlQuery);
+        $statement->execute([
+            ':id' => $id,
+            ':name' => $name,
+            ':type' => $type
+        ]);
     }
 
     public function delete(int $id): void

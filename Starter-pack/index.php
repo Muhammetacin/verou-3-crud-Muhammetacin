@@ -1,7 +1,7 @@
 <?php
 
 // Require the correct variable type to be used (no auto-converting)
-declare (strict_types = 1);
+declare (strict_types=1);
 
 // Show errors so we get helpful information
 ini_set('display_errors', '1');
@@ -43,14 +43,9 @@ switch ($action) {
         break;
 }
 
-if(!empty($_POST['name']) && isset($_POST['create'])) {
+if (!empty($_POST['name']) && isset($_POST['create'])) {
     $cardRepository->create($_POST['name'], $_POST['type']);
     header("location: success.php");
-}
-
-if(isset($_GET['id'])) {
-    $cardRepository->delete(intval($_GET['id']));
-    header("location: delete.php");
 }
 
 function overview($cards)
@@ -60,15 +55,31 @@ function overview($cards)
 
 function create($cardRepository)
 {
+    if(isset($_GET['name']) && isset($_GET['type'])) {
+        $cardRepository->create($_GET['name'], $_GET['type']);
+        header("location: success.php");
+        return;
+    }
+
     require 'create.php';
 }
 
 function update($cardRepository)
 {
+    if(isset($_GET['name']) && isset($_GET['type'])) {
+        $cardRepository->update(intval($_GET['id']), $_GET['name'], $_GET['type']);
+//        header("location: success_edit.php");
+        header("refresh:1; index.php");
+    }
+
+    $getPokemon = $cardRepository->find(intval($_GET['id']));
     require 'edit.php';
 }
 
 function delete($cardRepository)
 {
+    if(isset($_GET['id'])) {
+        $cardRepository->delete(intval($_GET['id']));
+    }
     require 'delete.php';
 }

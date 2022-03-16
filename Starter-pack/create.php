@@ -19,7 +19,7 @@
 <h1 class="d-flex justify-content-center text-white bg-danger py-3 mb-3">Create a new Pokèmon</h1>
 
 <div class="container d-flex justify-content-center mt-5">
-    <form method="post" action="index.php">
+    <form method="get" action="index.php">
         <label>Name:
             <input type="text" name="name">
         </label>
@@ -27,7 +27,7 @@
             <input type="text" name="type">
         </label>
 
-        <input type="submit" value="Create" name="create" class="btn btn-success ms-2">
+        <input type="submit" value="Create" name="action" class="btn btn-success ms-2">
     </form>
 </div>
 
