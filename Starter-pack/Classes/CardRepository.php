@@ -15,7 +15,7 @@ class CardRepository
 
     public function create(string $name, string $type): void
     {
-        $sqlQuery = 'INSERT INTO types (name, type) VALUES (:name, :type)';
+        $sqlQuery = 'INSERT INTO types (name, type, created_at) VALUES (:name, :type, NOW())';
         $statement = $this->databaseManager->connection->prepare($sqlQuery);
         $statement->execute([
             ':name' => $name,
