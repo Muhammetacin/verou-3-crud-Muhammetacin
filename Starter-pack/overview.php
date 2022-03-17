@@ -35,6 +35,36 @@
             <label for="water"> Water</label><br>
             <input type="checkbox" id="grass" name="type[]" value="Grass">
             <label for="grass"> Grass</label><br>
+            <input type="checkbox" id="normal" name="type[]" value="Normal">
+            <label for="normal"> Normal</label><br>
+            <input type="checkbox" id="fighting" name="type[]" value="Fighting">
+            <label for="fighting"> Fighting</label><br>
+            <input type="checkbox" id="flying" name="type[]" value="Flying">
+            <label for="flying"> Flying</label><br>
+            <input type="checkbox" id="poison" name="type[]" value="Poison">
+            <label for="poison"> Poison</label><br>
+            <input type="checkbox" id="ground" name="type[]" value="Ground">
+            <label for="ground"> Ground</label><br>
+            <input type="checkbox" id="rock" name="type[]" value="Rock">
+            <label for="rock"> Rock</label><br>
+            <input type="checkbox" id="bug" name="type[]" value="Bug">
+            <label for="bug"> Bug</label><br>
+            <input type="checkbox" id="ghost" name="type[]" value="Ghost">
+            <label for="ghost"> Ghost</label><br>
+            <input type="checkbox" id="steel" name="type[]" value="Steel">
+            <label for="steel"> Steel</label><br>
+            <input type="checkbox" id="electric" name="type[]" value="Electric">
+            <label for="electric"> Electric</label><br>
+            <input type="checkbox" id="psychic" name="type[]" value="Psychic">
+            <label for="psychic"> Psychic</label><br>
+            <input type="checkbox" id="ice" name="type[]" value="Ice">
+            <label for="ice"> Ice</label><br>
+            <input type="checkbox" id="dragon" name="type[]" value="Dragon">
+            <label for="dragon"> Dragon</label><br>
+            <input type="checkbox" id="dark" name="type[]" value="Dark">
+            <label for="dark"> Dark</label><br>
+            <input type="checkbox" id="fairy" name="type[]" value="Fairy">
+            <label for="fairy"> Fairy</label><br>
         </form>
     </aside>
 
