@@ -64,4 +64,33 @@ class CardRepository
         ]);
     }
 
+    public function getFiltered(array $types): array
+    {
+        if(count($types) === 0) {
+            return $this->get();
+        }
+
+        if(count($types) === 1) {
+            $sqlQuery = 'SELECT * FROM types WHERE type = :type';
+            $statement = $this->databaseManager->connection->prepare($sqlQuery);
+            $statement->execute([
+                ':type' => $types[0]
+            ]);
+            return $statement->fetchAll(PDO::FETCH_ASSOC);
+        }
+
+        if(count($types) >= 2) {
+            $sqlQuery = 'SELECT * FROM types WHERE type != NULL';
+
+            while (count($types) > 0) {
+                $sqlQuery .= ' OR type = \'' . $types[0] . '\'';
+                array_shift($types);
+            }
+            $statement = $this->databaseManager->connection->prepare($sqlQuery);
+            $statement->execute();
+            return $statement->fetchAll(PDO::FETCH_ASSOC);
+        }
+
+        return [];
+    }
 }

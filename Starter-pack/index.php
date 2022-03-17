@@ -38,6 +38,9 @@ switch ($action) {
     case 'Delete':
         delete($cardRepository);
         break;
+    case 'Filter':
+        filter($cardRepository, $cards);
+        break;
     default:
         overview($cardRepository, $cards);
         break;
@@ -71,8 +74,10 @@ function update($cardRepository)
 //        header("location: success_edit.php");
         header("refresh:1; index.php");
     }
+    var_dump($_GET);
 
     $getPokemon = $cardRepository->find(intval($_GET['id']));
+    var_dump($getPokemon);
     require 'edit.php';
 }
 
@@ -82,4 +87,12 @@ function delete($cardRepository)
         $cardRepository->delete(intval($_GET['id']));
     }
     require 'delete.php';
+}
+
+function filter($cardRepository, $cards) {
+//    var_dump($_GET['type']);
+    if(isset($_GET['type'])) {
+        $cards = $cardRepository->getFiltered($_GET['type']);
+    }
+    require 'overview.php';
 }
