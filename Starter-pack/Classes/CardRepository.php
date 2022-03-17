@@ -16,7 +16,6 @@ class CardRepository
     public function create(string $name, string $type): void
     {
         $sqlQuery = 'INSERT INTO types (name, type) VALUES (:name, :type)';
-
         $statement = $this->databaseManager->connection->prepare($sqlQuery);
         $statement->execute([
             ':name' => $name,
@@ -38,7 +37,7 @@ class CardRepository
     // Get all
     public function get(): array
     {
-        $sqlQuery = 'SELECT * FROM types';
+        $sqlQuery = 'SELECT * FROM types WHERE is_deleted IS NULL';
         $statement = $this->databaseManager->connection->prepare($sqlQuery);
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -46,7 +45,6 @@ class CardRepository
 
     public function update(int $id, string $name, string $type): void
     {
-//        $sqlQuery = 'UPDATE types SET name=' . $name . ', type='. $type .' WHERE id = '. $id;
         $sqlQuery = 'UPDATE types SET name=:name, type=:type WHERE id = :id';
         $statement = $this->databaseManager->connection->prepare($sqlQuery);
         $statement->execute([
@@ -58,7 +56,8 @@ class CardRepository
 
     public function delete(int $id): void
     {
-        $sqlQuery = 'DELETE FROM types WHERE id = :id';
+//        $sqlQuery = 'DELETE FROM types WHERE id = :id';
+        $sqlQuery = 'UPDATE types SET is_deleted = 1 WHERE id = :id';
         $statement = $this->databaseManager->connection->prepare($sqlQuery);
         $statement->execute([
             ':id' => $id
