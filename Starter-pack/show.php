@@ -18,9 +18,17 @@
 
 <h1 id="title" class="d-flex justify-content-center text-white bg-success py-3 mb-3"></h1>
 
-<div class="container d-flex justify-content-center">
+<div class="container d-flex justify-content-center align-content-center w-50">
     <img src="" id="image">
-    <p>More information about <?= $_GET['name'] ?></p>
+    <div class="d-flex justify-content-center flex-column align-content-center">
+        <p>More information about <?= $_GET['name'] ?>. There is no description in the API for me to show here so I am
+            writing this text as if there is a description of the pokèmon you're seeing now. Doesn't it look cute
+            though?</p>
+    </div>
+</div>
+
+<div class="container d-flex justify-content-center">
+    <a href="index.php" class="btn btn-primary">Back To Home</a>
 </div>
 
 <script>
