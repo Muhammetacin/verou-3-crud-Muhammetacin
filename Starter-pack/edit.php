@@ -26,10 +26,17 @@
         <label>Type:
             <input type="text" name="type" value="<?php echo $getPokemon[0]['type'] ?>">
         </label>
+        <label>Last update:
+            <input type="text" name="type" value="<?php echo $getPokemon[0]['updated_at'] ?>" disabled>
+        </label>
         <input type="hidden" name="id" value="<?php echo $getPokemon[0]['id']?>">
 
         <input type="submit" value="Update" name="action" class="btn btn-success ms-2">
     </form>
+</div>
+
+<div class="container d-flex justify-content-center">
+    <a href="index.php" class="btn btn-primary">Back To Home</a>
 </div>
 
 </body>

@@ -45,7 +45,7 @@ class CardRepository
 
     public function update(int $id, string $name, string $type): void
     {
-        $sqlQuery = 'UPDATE types SET name=:name, type=:type WHERE id = :id';
+        $sqlQuery = 'UPDATE types SET name=:name, type=:type, updated_at=NOW() WHERE id = :id';
         $statement = $this->databaseManager->connection->prepare($sqlQuery);
         $statement->execute([
             ':id' => $id,
