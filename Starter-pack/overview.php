@@ -16,7 +16,7 @@
 </head>
 <body>
 
-<h1 class="d-flex justify-content-center text-white bg-danger py-3 mb-3">The Pokèmon Database</h1>
+<h1 class="d-flex justify-content-center text-white bg-danger py-3 mb-3"><a href="index.php" class="text-decoration-none text-white">The Pokèmon Database</a></h1>
 
 <div class="container d-flex d-flex justify-content-center my-3">
     <input id="searchBar" type="text" name="search" placeholder="Search Pokèmon" class="form-control w-25 text-center">
