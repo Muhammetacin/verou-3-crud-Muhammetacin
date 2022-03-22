@@ -15,8 +15,9 @@ require_once 'Classes/CardRepository.php';
 
 $config = parse_url(getenv("DATABASE_URL"));
 $config["dbname"] = ltrim($config["path"], "/");
+var_dump($config);
 
-$databaseManager = new DatabaseManager($config['host'], $config['user'], $config['password'], $config['dbname']);
+$databaseManager = new DatabaseManager($config['host'], $config['user'], $config['pass'], $config['dbname']);
 $databaseManager->connect();
 
 // This example is about a Pokémon card collection
