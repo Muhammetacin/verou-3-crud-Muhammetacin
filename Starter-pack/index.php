@@ -20,9 +20,9 @@ $config = new PDO("pgsql:" . sprintf(
         $db["port"],
         $db["user"],
         $db["pass"],
-        ltrim($db["dbname"], "/")
+        ltrim($db["path"], "/")
     ));
-var_dump($config['host']);
+var_dump($config['path']);
 
 $databaseManager = new DatabaseManager($config['host'], $config['user'], $config['password'], $config['dbname']);
 $databaseManager->connect();
