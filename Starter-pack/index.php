@@ -13,6 +13,10 @@ error_reporting(E_ALL);
 require_once 'Classes/DatabaseManager.php';
 require_once 'Classes/CardRepository.php';
 
+$db = parse_url(getenv("DATABASE_URL"));
+var_dump($db);
+var_dump($db["host"]);
+
 $databaseManager = new DatabaseManager(getenv('host'), getenv('user'), getenv('password'), getenv('database'));
 $databaseManager->connect();
 
