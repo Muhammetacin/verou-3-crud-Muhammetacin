@@ -30,7 +30,7 @@ class DatabaseManager
         // make the connection to the database -> done
         try
         {
-            $dsn = "mysql:host={$this->host};dbname={$this->dbname};port={$this->port}";
+            $dsn = "mysql:host={$this->host};port={$this->port};dbname={$this->dbname}";
             $this->connection = new PDO($dsn, $this->user, $this->password);
             $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         }
