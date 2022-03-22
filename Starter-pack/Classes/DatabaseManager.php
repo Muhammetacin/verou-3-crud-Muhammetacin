@@ -9,18 +9,20 @@ class DatabaseManager
     private string $user;
     private string $password;
     private string $dbname;
+    private string $port;
 
     // This one is public, so we can use it outside of this class
     // We could also use a private variable and a getter (but let's not make things too complicated at this point)
     public PDO $connection;
 
-    public function __construct(string $host, string $user, string $password, string $dbname)
+    public function __construct(string $host, string $user, string $password, string $dbname, string $port)
     {
         // Set any user and password information -> done
         $this->host = $host;
         $this->user = $user;
         $this->password = $password;
         $this->dbname = $dbname;
+        $this->port = $port;
     }
 
     public function connect(): void
@@ -28,7 +30,7 @@ class DatabaseManager
         // make the connection to the database -> done
         try
         {
-            $dsn = "mysql:host={$this->host};dbname={$this->dbname}";
+            $dsn = "mysql:host={$this->host};dbname={$this->dbname};port={$this->port}";
             $this->connection = new PDO($dsn, $this->user, $this->password);
             $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         }
