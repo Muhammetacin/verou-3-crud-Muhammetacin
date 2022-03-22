@@ -13,7 +13,7 @@ require_once 'config.php';
 require_once 'classes/DatabaseManager.php';
 require_once 'classes/CardRepository.php';
 
-$databaseManager = new DatabaseManager($config['host'], $config['user'], $config['password'], $config['dbname']);
+$databaseManager = new DatabaseManager(getenv(host), getenv('user'), getenv['password'], getenv['database']);
 $databaseManager->connect();
 
 // This example is about a Pokémon card collection

@@ -21,7 +21,7 @@
 <div class="container d-flex justify-content-center align-content-center w-50">
     <img src="" id="image">
     <div class="d-flex justify-content-center flex-column align-content-center">
-        <p>More information about <?= $_GET['name'] ?>. There is no description in the API for me to show here so I am
+        <p id="description">More information about <?= $_GET['name'] ?>. There is no description in the API for me to show here so I am
             writing this text as if there is a description of the pokèmon you're seeing now. Doesn't it look cute
             though?</p>
     </div>
@@ -34,12 +34,17 @@
 <script>
     const title = document.getElementById('title');
     const image = document.getElementById('image');
+    const description = document.getElementById('description');
 
     title.innerHTML = 'Details of <?php echo $_GET['name'] ?>';
 
-    const api = fetch(`https://pokeapi.co/api/v2/pokemon/<?php echo strtolower($_GET['name'])?>`)
+    const pokemonApi = fetch(`https://pokeapi.co/api/v2/pokemon/<?php echo strtolower($_GET['name'])?>`)
         .then(response => response.json())
         .then(data => image.src = data.sprites.front_default);
+
+    const pokemonDescrApi = fetch('https://pokeapi.co/api/v2/pokemon-species/<?php echo strtolower($_GET['name'])?>')
+        .then(response => response.json())
+        .then(data => description.innerHTML = data.flavor_text_entries[0].flavor_text);
 </script>
 
 </body>
