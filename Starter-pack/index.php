@@ -13,16 +13,8 @@ error_reporting(E_ALL);
 require_once 'Classes/DatabaseManager.php';
 require_once 'Classes/CardRepository.php';
 
-$db = parse_url(getenv("DATABASE_URL"));
-$config = new PDO("pgsql:" . sprintf(
-        "host=%s;port=%s;user=%s;password=%s;dbname=%s",
-        $db["host"],
-        $db["port"],
-        $db["user"],
-        $db["pass"],
-        ltrim($db["path"], "/")
-    ));
-var_dump($config['path']);
+$config = parse_url(getenv("DATABASE_URL"));
+$config["dbname"] = ltrim($config["path"], "/");
 
 $databaseManager = new DatabaseManager($config['host'], $config['user'], $config['password'], $config['dbname']);
 $databaseManager->connect();
