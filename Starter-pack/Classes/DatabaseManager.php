@@ -9,13 +9,13 @@ class DatabaseManager
     private string $user;
     private string $password;
     private string $dbname;
-    private string $port;
+    private int $port;
 
     // This one is public, so we can use it outside of this class
     // We could also use a private variable and a getter (but let's not make things too complicated at this point)
     public PDO $connection;
 
-    public function __construct(string $host, string $user, string $password, string $dbname, string $port)
+    public function __construct(string $host, string $user, string $password, string $dbname, int $port)
     {
         // Set any user and password information -> done
         $this->host = $host;
