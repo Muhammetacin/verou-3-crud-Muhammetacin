@@ -14,10 +14,17 @@ require_once 'Classes/DatabaseManager.php';
 require_once 'Classes/CardRepository.php';
 
 $db = parse_url(getenv("DATABASE_URL"));
-var_dump($db);
-var_dump($db["host"]);
+$config = new PDO("pgsql:" . sprintf(
+        "host=%s;port=%s;user=%s;password=%s;dbname=%s",
+        $db["host"],
+        $db["port"],
+        $db["user"],
+        $db["pass"],
+        ltrim($db["dbname"], "/")
+    ));
+var_dump($config['host']);
 
-$databaseManager = new DatabaseManager(getenv('host'), getenv('user'), getenv('password'), getenv('database'));
+$databaseManager = new DatabaseManager($config['host'], $config['user'], $config['password'], $config['dbname']);
 $databaseManager->connect();
 
 // This example is about a Pokémon card collection
@@ -62,7 +69,7 @@ function overview($cardRepository, $cards)
 
 function create($cardRepository)
 {
-    if(isset($_GET['name']) && isset($_GET['type'])) {
+    if (isset($_GET['name']) && isset($_GET['type'])) {
         $cardRepository->create($_GET['name'], $_GET['type']);
         header("location: success.php?name=" . $_GET['name'] . "&type=" . $_GET['type']);
         return;
@@ -73,7 +80,7 @@ function create($cardRepository)
 
 function update($cardRepository)
 {
-    if(isset($_GET['name']) && isset($_GET['type'])) {
+    if (isset($_GET['name']) && isset($_GET['type'])) {
         $cardRepository->update(intval($_GET['id']), $_GET['name'], $_GET['type']);
 //        header("location: success_edit.php");
         header("refresh:1; index.php");
@@ -87,15 +94,16 @@ function update($cardRepository)
 
 function delete($cardRepository)
 {
-    if(isset($_GET['id'])) {
+    if (isset($_GET['id'])) {
         $cardRepository->delete(intval($_GET['id']));
     }
     require 'delete.php';
 }
 
-function filter($cardRepository, $cards) {
+function filter($cardRepository, $cards)
+{
 //    var_dump($_GET['type']);
-    if(isset($_GET['type'])) {
+    if (isset($_GET['type'])) {
         $cards = $cardRepository->getFiltered($_GET['type']);
     }
     require 'overview.php';
