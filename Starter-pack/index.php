@@ -9,7 +9,7 @@ ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 
 // Load you classes
-require_once 'config.php';
+//require_once 'config.php';
 require_once 'classes/DatabaseManager.php';
 require_once 'classes/CardRepository.php';
 
