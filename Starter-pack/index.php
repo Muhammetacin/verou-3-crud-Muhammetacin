@@ -10,10 +10,10 @@ error_reporting(E_ALL);
 
 // Load you classes
 //require_once 'config.php';
-require_once 'classes/DatabaseManager.php';
-require_once 'classes/CardRepository.php';
+require_once 'Classes/DatabaseManager.php';
+require_once 'Classes/CardRepository.php';
 
-$databaseManager = new DatabaseManager(getenv(host), getenv('user'), getenv['password'], getenv['database']);
+$databaseManager = new DatabaseManager(getenv('host'), getenv('user'), getenv('password'), getenv('database'));
 $databaseManager->connect();
 
 // This example is about a Pokémon card collection
